@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.syr" 

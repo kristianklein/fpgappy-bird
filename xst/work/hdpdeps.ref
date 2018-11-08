@@ -1,0 +1,17 @@
+V3 6
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" 2018/11/08.09:33:34 P.20131013
+EN work/clockscaler_1k 1541666903 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/clockscaler_1k/Behavioral 1541666904 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" \
+      EN work/clockscaler_1k 1541666903
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" 2018/11/08.09:42:28 P.20131013
+EN work/clockscaler_25M 1541666897 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/clockscaler_25M/Behavioral 1541666898 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" \
+      EN work/clockscaler_25M 1541666897
