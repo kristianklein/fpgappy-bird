@@ -4,15 +4,15 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to /home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Parameter xsthdpdir set to /home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
@@ -20,13 +20,13 @@ WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Onl
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" in Library work.
-Entity <clockscaler_25m> compiled.
-Entity <clockscaler_25m> (Architecture <behavioral>) compiled.
+Compiling vhdl file "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_10MHz.vhd" in Library work.
+Entity <clockscaler_12M5> compiled.
+Entity <clockscaler_12M5> (Architecture <Behavioral>) compiled.
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> 
 

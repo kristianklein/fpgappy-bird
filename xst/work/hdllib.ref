@@ -1,4 +1,6 @@
-EN clockscaler_25m NULL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" sub00/vhpl02 1541666897
-AR clockscaler_25m behavioral "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" sub00/vhpl03 1541666898
+EN clockscaler_25m NULL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" sub00/vhpl02 1541667740
+EN clockscaler_12m5 NULL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_10MHz.vhd" sub00/vhpl04 1541668485
+AR clockscaler_12m5 behavioral "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_10MHz.vhd" sub00/vhpl05 1541668486
+AR clockscaler_25m behavioral "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" sub00/vhpl03 1541667741
 EN clockscaler_1k NULL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" sub00/vhpl00 1541666903
 AR clockscaler_1k behavioral "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" sub00/vhpl01 1541666904
