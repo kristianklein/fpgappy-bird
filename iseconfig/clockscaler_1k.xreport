@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-11-08T10:56:26</DateModified>
+  <DateModified>2018-11-08T11:02:23</DateModified>
   <ModuleName>clockscaler_1k</ModuleName>
   <SummaryTimeStamp>2018-11-08T09:34:02</SummaryTimeStamp>
   <SavedFilePath>/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/iseconfig/clockscaler_1k.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/</ImplementationReportsDirectory>
   <DateInitialized>2018-11-08T09:12:51</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
