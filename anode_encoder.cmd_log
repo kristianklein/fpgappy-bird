@@ -1,0 +1,1 @@
+vhdtdtfi -prj Oscilloscope -o "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/anode_encoder.vhi" -module anode_encoder -template /home/klein/Apps/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work anode_encoder.vhd 

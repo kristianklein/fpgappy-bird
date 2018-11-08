@@ -1,1 +1,2 @@
 xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.syr" 
+vhdtdtfi -prj Oscilloscope -o "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhi" -module clockscaler_1k -template /home/klein/Apps/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work clockscaler_1k.vhd 

@@ -1,0 +1,1 @@
+vhdtdtfi -prj Oscilloscope -o "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/counter_2bit.vhi" -module counter_2bit -template /home/klein/Apps/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work counter_2bit.vhd 

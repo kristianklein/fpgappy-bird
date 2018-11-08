@@ -1,0 +1,1 @@
+vhdtdtfi -prj Oscilloscope -o "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/bcd2sevenseg.vhi" -module bcd2sevenseg -template /home/klein/Apps/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work hex2sevenseg.vhd 

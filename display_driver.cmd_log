@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.syr" 
