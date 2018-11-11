@@ -4,7 +4,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 ENTITY mux_4to1 IS
     PORT ( input : IN  STD_LOGIC_VECTOR (3 DOWNTO 0);
            output : OUT  STD_LOGIC;
-			  sel : IN STD_LOGIC_VECTOR (1 DOWNTO 0)
+					sel : IN STD_LOGIC_VECTOR (1 DOWNTO 0)
 			 );
 END mux_4to1;
 

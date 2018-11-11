@@ -1,11 +1,18 @@
-V3 33
+V3 40
 FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/anode_encoder.vhd" 2018/11/08.11:05:29 P.20131013
-EN work/anode_encoder 1541673144 \
+EN work/anode_encoder 1541955649 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/anode_encoder.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/anode_encoder/behavioral 1541673145 \
+AR work/anode_encoder/behavioral 1541955650 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/anode_encoder.vhd" \
-      EN work/anode_encoder 1541673144
+      EN work/anode_encoder 1541955649
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/bcd7seg_test.vhd" 2018/11/11.16:44:42 P.20131013
+EN work/bcd7seg_test 1541951089 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/bcd7seg_test.vhd" \
+      PB ieee/std_logic_1164 1381692176
+AR work/bcd7seg_test/Behavioral 1541951090 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/bcd7seg_test.vhd" \
+      EN work/bcd7seg_test 1541951089 CP bcd2sevenseg
 FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_10MHz.vhd" 2018/11/08.10:14:39 P.20131013
 EN work/clockscaler_12M5 1541668485 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_10MHz.vhd" \
@@ -14,14 +21,14 @@ EN work/clockscaler_12M5 1541668485 \
 AR work/clockscaler_12M5/Behavioral 1541668486 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_10MHz.vhd" \
       EN work/clockscaler_12M5 1541668485
-FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" 2018/11/08.10:59:23 P.20131013
-EN work/clockscaler_1k 1541673136 \
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" 2018/11/11.17:58:46 P.20131013
+EN work/clockscaler_1k 1541955641 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/clockscaler_1k/Behavioral 1541673137 \
+AR work/clockscaler_1k/Behavioral 1541955642 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_1k.vhd" \
-      EN work/clockscaler_1k 1541673136
+      EN work/clockscaler_1k 1541955641
 FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" 2018/11/08.10:02:13 P.20131013
 EN work/clockscaler_25M 1541667740 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" \
@@ -30,40 +37,47 @@ EN work/clockscaler_25M 1541667740 \
 AR work/clockscaler_25M/Behavioral 1541667741 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/clockscaler_25M.vhd" \
       EN work/clockscaler_25M 1541667740
-FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/counter_2bit.vhd" 2018/11/08.11:04:42 P.20131013
-EN work/counter_2bit 1541673138 \
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/counter_2bit.vhd" 2018/11/11.17:40:18 P.20131013
+EN work/counter_2bit 1541955643 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/counter_2bit.vhd" \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/counter_2bit/behavioral 1541673139 \
+AR work/counter_2bit/behavioral 1541955644 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/counter_2bit.vhd" \
-      EN work/counter_2bit 1541673138
-FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.vhd" 2018/11/08.11:32:06 P.20131013
-EN work/display_driver 1541673148 \
+      EN work/counter_2bit 1541955643
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.vhd" 2018/11/11.17:30:46 P.20131013
+EN work/display_driver 1541955653 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/display_driver/Structural 1541673149 \
+AR work/display_driver/Structural 1541955654 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_driver.vhd" \
-      EN work/display_driver 1541673148 CP clockscaler_1k CP counter_2bit \
+      EN work/display_driver 1541955653 CP clockscaler_1k CP counter_2bit \
       CP mux_16to4 CP mux_4to1 CP anode_encoder CP bcd2sevenseg
-FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/hex2sevenseg.vhd" 2018/11/08.11:29:21 P.20131013
-EN work/bcd2sevenseg 1541673146 \
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.vhd" 2018/11/11.18:00:32 P.20131013
+EN work/display_test 1541955655 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.vhd" \
+      PB ieee/std_logic_1164 1381692176
+AR work/display_test/Behavioral 1541955656 \
+      FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.vhd" \
+      EN work/display_test 1541955655 CP display_driver
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/hex2sevenseg.vhd" 2018/11/11.16:49:21 P.20131013
+EN work/bcd2sevenseg 1541955651 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/hex2sevenseg.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/bcd2sevenseg/behavioral 1541673147 \
+AR work/bcd2sevenseg/behavioral 1541955652 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/hex2sevenseg.vhd" \
-      EN work/bcd2sevenseg 1541673146
-FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_16to4.vhd" 2018/11/08.11:03:12 P.20131013
-EN work/mux_16to4 1541673140 \
+      EN work/bcd2sevenseg 1541955651
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_16to4.vhd" 2018/09/28.18:33:02 P.20131013
+EN work/mux_16to4 1541955645 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_16to4.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/mux_16to4/behavioral 1541673141 \
+AR work/mux_16to4/behavioral 1541955646 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_16to4.vhd" \
-      EN work/mux_16to4 1541673140
-FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_4to1.vhd" 2018/09/28.18:33:25 P.20131013
-EN work/mux_4to1 1541673142 \
+      EN work/mux_16to4 1541955645
+FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_4to1.vhd" 2018/11/11.17:51:02 P.20131013
+EN work/mux_4to1 1541955647 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_4to1.vhd" \
       PB ieee/std_logic_1164 1381692176
-AR work/mux_4to1/behavioral 1541673143 \
+AR work/mux_4to1/behavioral 1541955648 \
       FL "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_4to1.vhd" \
-      EN work/mux_4to1 1541673142
+      EN work/mux_4to1 1541955647

@@ -1,0 +1,251 @@
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+vhdtdtfi -prj Oscilloscope -o "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.vhi" -module display_test -template /home/klein/Apps/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work mux_4to1.vhd -lib work mux_16to4.vhd -lib work hex2sevenseg.vhd -lib work counter_2bit.vhd -lib work clockscaler_1k.vhd -lib work anode_encoder.vhd -lib work display_driver.vhd -lib work display_test.vhd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 
+xst -intstyle ise -ifn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.xst" -ofn "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/display_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc display_test.ucf -p xc3s500e-fg320-5 "display_test.ngc" display_test.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o display_test_map.ncd display_test.ngd display_test.pcf 
+par -w -intstyle ise -ol high -t 1 display_test_map.ncd display_test.ncd display_test.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml display_test.twx display_test.ncd -o display_test.twr display_test.pcf -ucf display_test.ucf 
+bitgen -intstyle ise -f display_test.ut display_test.ncd 

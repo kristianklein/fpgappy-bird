@@ -23,7 +23,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity display_driver is
     Port ( bcd : in  STD_LOGIC_VECTOR (15 downto 0);
            dp_vector : in  STD_LOGIC_VECTOR (3 downto 0);
-           CLK : in  STD_LOGIC;
+           clock : in  STD_LOGIC;
            seven_segment : out  STD_LOGIC_VECTOR (6 downto 0);
            anodes : out  STD_LOGIC_VECTOR (3 downto 0);
            dp : out  STD_LOGIC);
@@ -33,8 +33,8 @@ architecture Structural of display_driver is
 	-- COMPONENTS
 	COMPONENT clockscaler_1k
 	PORT(
-		CLK : IN std_logic;          
-		CLK_1k : OUT std_logic
+		clock : IN std_logic;          
+		clock_1k : OUT std_logic
 		);
 	END COMPONENT;
 	
@@ -76,18 +76,18 @@ architecture Structural of display_driver is
 	END COMPONENT;
 
 	-- SIGNALS
-	SIGNAL CLK_1k_sig : STD_LOGIC;
+	SIGNAL scaled_clock : STD_LOGIC;
 	SIGNAL bcd_mux : STD_LOGIC_VECTOR (3 DOWNTO 0);
 	SIGNAL sel_sig : STD_LOGIC_VECTOR (1 DOWNTO 0);
 begin
 	-- INSTANTIATIONS
 	Inst_clockscaler_1k: clockscaler_1k PORT MAP(
-		CLK => CLK,
-		CLK_1k => CLK_1k_sig
+		clock => clock,
+		clock_1k => scaled_clock
 	);
 	
 	Inst_counter_2bit: counter_2bit PORT MAP(
-		clock => CLK_1k_sig,
+		clock => scaled_clock,
 		output => sel_sig
 	);
 
@@ -114,4 +114,3 @@ begin
 	);
 
 end Structural;
-

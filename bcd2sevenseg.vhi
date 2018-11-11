@@ -1,5 +1,5 @@
 
--- VHDL Instantiation Created from source file bcd2sevenseg.vhd -- 11:29:48 11/08/2018
+-- VHDL Instantiation Created from source file bcd2sevenseg.vhd -- 16:27:43 11/11/2018
 --
 -- Notes: 
 -- 1) This instantiation template has been automatically generated using types

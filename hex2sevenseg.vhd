@@ -8,6 +8,9 @@ END bcd2sevenseg;
 
 ARCHITECTURE behavioral OF bcd2sevenseg IS
 
+-- CA is the most significant bit
+-- CG is the least significant bit
+
 BEGIN
 	WITH bcd SELECT
 		sevenseg <= "0000001" WHEN "0000", --0

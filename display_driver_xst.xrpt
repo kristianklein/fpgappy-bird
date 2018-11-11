@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Thu Nov  8 11:32:15 2018">
+  <application stringID="Xst" timeStamp="Sun Nov 11 15:31:16 2018">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -36,16 +36,16 @@
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
-        <item stringID="User_EnvOsname" value="Ubuntu"/>
-        <item stringID="User_EnvOsrelease" value="Ubuntu 18.04.1 LTS"/>
+        <item stringID="User_EnvOsname" value="LinuxMint"/>
+        <item stringID="User_EnvOsrelease" value="Linux Mint 19 Tara"/>
       </item>
-      <item stringID="User_EnvHost" value="kklaptop"/>
+      <item stringID="User_EnvHost" value="kkbox"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Core(TM) i5-3337U CPU @ 1.80GHz"/>
-          <item stringID="speed" value="1804.090 MHz"/>
+          <item stringID="arch" value="Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz"/>
+          <item stringID="speed" value="3340.772 MHz"/>
         </row>
       </table>
     </section>
