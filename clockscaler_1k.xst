@@ -1,5 +1,0 @@
-set -tmpdir "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/xst/projnav.tmp"
-set -xsthdpdir "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/xst"
-elaborate
--ifn clockscaler_1k.prj
--ifmt mixed

@@ -1,7 +1,0 @@
-vhdl work "mux_4to1.vhd"
-vhdl work "mux_16to4.vhd"
-vhdl work "hex2sevenseg.vhd"
-vhdl work "counter_2bit.vhd"
-vhdl work "clockscaler_1k.vhd"
-vhdl work "anode_encoder.vhd"
-vhdl work "display_driver.vhd"

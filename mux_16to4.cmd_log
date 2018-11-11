@@ -1,1 +1,0 @@
-vhdtdtfi -prj Oscilloscope -o "/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/mux_16to4.vhi" -module mux_16to4 -template /home/klein/Apps/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work mux_16to4.vhd 

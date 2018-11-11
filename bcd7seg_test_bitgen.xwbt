@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/bcd7seg_test.ncd
-OUTFILE=/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope/bcd7seg_test.bit
-FAMILY=Spartan3E
-PART=xc3s500e-5fg320
-WORKINGDIR=/home/klein/Dropbox/Elektro/5. semester/LABD/Oscilloscope
-LICENSE=WebPack
-USER_INFO=211582737_0_0_158

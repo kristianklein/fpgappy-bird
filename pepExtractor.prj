@@ -1,7 +1,0 @@
-work	"anode_encoder.vhd"
-work	"clockscaler_1k.vhd"
-work	"counter_2bit.vhd"
-work	"display_driver.vhd"
-work	"hex2sevenseg.vhd"
-work	"mux_16to4.vhd"
-work	"mux_4to1.vhd"
