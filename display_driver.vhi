@@ -1,5 +1,5 @@
 
--- VHDL Instantiation Created from source file display_driver.vhd -- 17:10:27 11/11/2018
+-- VHDL Instantiation Created from source file display_driver.vhd -- 23:52:12 11/11/2018
 --
 -- Notes: 
 -- 1) This instantiation template has been automatically generated using types
@@ -10,7 +10,7 @@
 	PORT(
 		bcd : IN std_logic_vector(15 downto 0);
 		dp_vector : IN std_logic_vector(3 downto 0);
-		CLK : IN std_logic;          
+		clock : IN std_logic;          
 		seven_segment : OUT std_logic_vector(6 downto 0);
 		anodes : OUT std_logic_vector(3 downto 0);
 		dp : OUT std_logic
@@ -20,7 +20,7 @@
 	Inst_display_driver: display_driver PORT MAP(
 		bcd => ,
 		dp_vector => ,
-		CLK => ,
+		clock => ,
 		seven_segment => ,
 		anodes => ,
 		dp => 
