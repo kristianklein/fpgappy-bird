@@ -15,8 +15,8 @@
 #NET "SW7" LOC = "R17";
 
 # LEDs
-#NET "LD0" LOC = "J14";
-#NET "LD1" LOC = "J15";
+NET "LD0" LOC = "J14";
+NET "LD1" LOC = "J15";
 #NET "LD2" LOC = "K15";
 #NET "LD3" LOC = "K14";
 #NET "LD4" LOC = "E17";

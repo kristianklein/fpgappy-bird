@@ -14,7 +14,8 @@ entity sampler is
 			  D1 : in STD_LOGIC;
 			  -- prescaler : in STD_LOGIC_VECTOR (7 DOWNTO 0);
            AD1_hex : out  STD_LOGIC_VECTOR (11 downto 0);
-           AD2_hex : out  STD_LOGIC_VECTOR (11 downto 0)
+           AD2_hex : out  STD_LOGIC_VECTOR (11 downto 0);
+			  LD0, LD1 : out STD_LOGIC
 			);
 end sampler;
 
@@ -39,7 +40,8 @@ architecture Behavioral of sampler is
 	SIGNAL AD2_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL start_sig : STD_LOGIC;
 	SIGNAL done_sig : STD_LOGIC;
-	SIGNAL prescale_counter : STD_LOGIC_VECTOR (15 DOWNTO 0);
+	SIGNAL prescale_counter : STD_LOGIC_VECTOR (23 DOWNTO 0);
+	SIGNAL LD1_sig : STD_LOGIC;
 begin
 	-- INSTANTIATIONS
 	Inst_adc_interface: adc_interface PORT MAP(
@@ -58,18 +60,24 @@ begin
 	AD1_hex <= AD1_sig;
 	AD2_hex <= AD2_sig;
 	
+	LD0 <= done_sig;
+	--LD1 <= start_sig;
+	LD1 <= LD1_sig;
 	PROCESS (CLK)
 	BEGIN
 		IF rising_edge(CLK) THEN
-			IF (prescale_counter >= 49999) THEN -- sampling rate of 1 kHz
+			IF (prescale_counter >= 50000000) THEN -- sampling rate of 1 kHz
 				start_sig <= '1'; -- start conversion
 				prescale_counter <= (OTHERS => '0');
+				LD1_sig <= NOT LD1_sig; -- DEBUG
+				
 			ELSE
 				prescale_counter <= prescale_counter + 1;
 				
 				IF (done_sig = '1') THEN
 					start_sig <= '0';
 				END IF;
+				
 			END IF;
 		END IF;
 	END PROCESS;
