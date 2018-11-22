@@ -45,7 +45,7 @@ begin
 	begin
 		if rising_edge(Clk) then
 			Scale := Scale + 1;
-			if Scale > 3 then -- Nedscalering af Clk fra 50 MHz til 12,5 MHz (evt)
+			if Scale > 3 then -- Nedscalering af Clk fra 50 MHz til 12,5 MHz
             Scale := 0;
 				
 				case State is
@@ -84,7 +84,7 @@ begin
 					when S1 =>
 						SClk <= '1';
 						
-						IF (bit_counter = 16) THEN -- Konvertering færdig (4 nuller + 12 data bits)
+						IF (bit_counter >= 16) THEN -- Konvertering færdig (4 nuller + 12 data bits)
 							AD1 <= Temp1;
 							AD2 <= Temp2;
 							Done <= '1';
@@ -100,7 +100,7 @@ begin
 					when ADC_Done =>
 						if Start='0' then
 							State <= Idle; --<<< Skift tilstand >>>
-						end if;	
+						end if;
 						
 					when others =>
 							State <= Reset;
