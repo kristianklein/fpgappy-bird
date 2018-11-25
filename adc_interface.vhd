@@ -15,10 +15,10 @@ entity adc_interface is
     Port ( Clk :   in  STD_LOGIC;  -- System clock (50 MHz)
            Start : in  STD_LOGIC;  -- Start skift 0->1 starter en konvertering
            Done : out  STD_LOGIC;  -- Done=1 Angiver at konverteringen er færdig
-			  SClk:  out  STD_LOGIC;  -- Seriel Clock til ADC
-			  CS:    out  STD_LOGIC;  -- Chip Select til ADC (starter og stopper konverteringen)
-			  D0:    in   STD_LOGIC;  -- Burde kaldes for D1 - data bit fra ADC0
-			  D1:    in   STD_LOGIC;  -- Burde kaldes for D2 - data bit fra ADC1
+            SClk:  out  STD_LOGIC;  -- Seriel Clock til ADC
+            CS:    out  STD_LOGIC;  -- Chip Select til ADC (starter og stopper konverteringen)
+            D0:    in   STD_LOGIC;  -- Burde kaldes for D1 - data bit fra ADC0
+            D1:    in   STD_LOGIC;  -- Burde kaldes for D2 - data bit fra ADC1
            AD1 :  out  STD_LOGIC_VECTOR (11 downto 0);   -- 12 bit AD data #1
            AD2 :  out  STD_LOGIC_VECTOR (11 downto 0));  -- 12 bit AD data #2
 end adc_interface;

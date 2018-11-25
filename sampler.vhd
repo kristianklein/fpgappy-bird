@@ -66,10 +66,10 @@ begin
 	PROCESS (CLK)
 	BEGIN
 		IF rising_edge(CLK) THEN
-			IF (prescale_counter >= 50000000) THEN -- sampling rate of 1 kHz
+			IF (prescale_counter >= 100) THEN -- sampling rate of ~495 kHz (you cannot set the counter lower than 100 or the ADC stalls, fix it in ADC interface)
 				start_sig <= '1'; -- start conversion
 				prescale_counter <= (OTHERS => '0');
-				LD1_sig <= NOT LD1_sig; -- DEBUG
+				LD1_sig <= NOT LD1_sig; -- DEBUG (this will make the frequency over the LED be half the sampling frequency, since it only inverts)
 				
 			ELSE
 				prescale_counter <= prescale_counter + 1;
