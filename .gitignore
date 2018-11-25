@@ -61,6 +61,7 @@ webtalk_pn.xml
 *.tcl
 *.log
 *.debug
+*.vhi
 
 # generated folders
 iseconfig/

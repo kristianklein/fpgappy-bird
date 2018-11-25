@@ -8,12 +8,15 @@ entity continous_adc_test is
            AN0,AN1,AN2,AN3 : out  STD_LOGIC;
            CA,CB,CC,CD,CE,CF,CG : out  STD_LOGIC;
            DP : out  STD_LOGIC;
-			  LD0, LD1 : OUT STD_LOGIC);
+           LD0, LD1 : OUT STD_LOGIC;
+           RED0,RED1,RED2 : OUT STD_LOGIC;
+           GRN0,GRN1,GRN2 : OUT STD_LOGIC;
+           BLU1,BLU2 : OUT STD_LOGIC;
+           HSYNC,VSYNC : OUT STD_LOGIC);
 end continous_adc_test;
 
 architecture Behavioral of continous_adc_test is
 	-- COMPONENTS
-	
 	COMPONENT binary2bcd
 	PORT(
 		binary : IN std_logic_vector(11 downto 0);
@@ -55,6 +58,17 @@ architecture Behavioral of continous_adc_test is
 		AD2 : OUT std_logic_vector(11 downto 0)
 		);
 	END COMPONENT;
+  
+  COMPONENT vga_driver
+	PORT(
+		CLK : IN std_logic;
+		reset : IN std_logic;
+		rgb_in : IN std_logic_vector(7 downto 0);          
+		hsync : OUT std_logic;
+		vsync : OUT std_logic;
+		rgb_out : OUT std_logic_vector(7 downto 0)
+		);
+	END COMPONENT;
 
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -64,6 +78,7 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL anode_sig : STD_LOGIC_VECTOR (3 DOWNTO 0);
   SIGNAL start_sig : STD_LOGIC;
   SIGNAL done_sig : STD_LOGIC;
+  SIGNAL rgb_out_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
 begin
 	LD0 <= done_sig;
   LD1 <= start_sig;
@@ -101,9 +116,20 @@ begin
 		D1 => JA3,
 		AD1 => AD1_sig,
 		AD2 => AD2_sig
-	);	
+	);
+  
+  Inst_vga_driver: vga_driver PORT MAP(
+		CLK => CLK,
+		reset => '0',
+		rgb_in => AD1_sig(11 DOWNTO 4),
+		hsync => HSYNC,
+		vsync => VSYNC,
+		rgb_out => rgb_out_sig
+	);
+
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
 	(CA,CB,CC,CD,CE,CF,CG) <= seven_segment_sig;
+  (RED2,RED1,RED0,GRN2,GRN1,GRN0,BLU2,BLU1) <= rgb_out_sig;
 end Behavioral;
 

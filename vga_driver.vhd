@@ -6,11 +6,10 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity vga_driver is
     Port ( CLK : in  STD_LOGIC;
            reset : in  STD_LOGIC;
+           rgb_in : in STD_LOGIC_VECTOR (7 DOWNTO 0);
            hsync : out  STD_LOGIC;
            vsync : out  STD_LOGIC;
-           red : out  STD_LOGIC_VECTOR (2 downto 0);
-           green : out  STD_LOGIC_VECTOR (2 downto 0);
-           blue : out  STD_LOGIC_VECTOR (1 downto 0));
+           rgb_out : out STD_LOGIC_VECTOR (7 DOWNTO 0));
 end vga_driver;
 
 architecture Behavioral of vga_driver is
@@ -126,19 +125,12 @@ END PROCESS;
 draw_display: PROCESS (vga_clock, reset, v_pos, h_pos, RGB_enable)
 BEGIN
   IF (reset = '1') THEN
-    red <= "000";
-    green <= "000";
-    blue <= "00";
+    rgb_out <= "00000000";
   ELSIF rising_edge(vga_clock) THEN
     IF (RGB_enable = '1') THEN
-      -- This should produce a white screen
-      red <= "111";
-      green <= "111";
-      blue <= "11"; 
+      rgb_out <= rgb_in;
     ELSE
-      red <= "000";
-      green <= "000";
-      blue <= "00";
+      rgb_out <= "00000000";
     END IF;
   END IF;
 END PROCESS;
