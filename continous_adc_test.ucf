@@ -68,3 +68,15 @@ NET "JA4" LOC = "M15";
 #NET "JA10" LOC = "M16";
 # JA11 tied to GND
 # JA12 tied to VCC
+
+# VGA
+NET "RED0" LOC = "R9";
+NET "RED1" LOC = "T8";
+NET "RED2" LOC = "R8";
+NET "GRN0" LOC = "N8";
+NET "GRN1" LOC = "P8";
+NET "GRN2" LOC = "P6";
+NET "BLU1" LOC = "U5";
+NET "BLU2" LOC = "U4";
+NET "HSYNC" LOC = "T4";
+NET "VSYNC" LOC = "U3";
