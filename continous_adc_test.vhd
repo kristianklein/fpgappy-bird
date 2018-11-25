@@ -16,7 +16,7 @@ architecture Behavioral of continous_adc_test is
 	
 	COMPONENT binary2bcd
 	PORT(
-		binary : IN std_logic_vector(11 downto 0);          
+		binary : IN std_logic_vector(11 downto 0);
 		bcd : OUT std_logic_vector(15 downto 0)
 		);
 	END COMPONENT;
@@ -86,7 +86,7 @@ begin
 	Inst_sampler: sampler PORT MAP(
 		CLK => CLK,
 		done => done_sig,
-		prescaler => "0000001111101000", -- scale down by 1 MHz down by 1000 (1 kHz)
+		prescaler => "0000000000000010", -- scale down by 1 MHz down by 2 (500 kHz)
 		enable => '1',
 		start => start_sig
 	);
