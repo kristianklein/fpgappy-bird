@@ -42,6 +42,20 @@ architecture Behavioral of continous_adc_test is
 		);
 	END COMPONENT;
 
+	COMPONENT adc_interface
+	PORT(
+		Clk : IN std_logic;
+		Start : IN std_logic;
+		D0 : IN std_logic;
+		D1 : IN std_logic;          
+		Done : OUT std_logic;
+		SClk : OUT std_logic;
+		CS : OUT std_logic;
+		AD1 : OUT std_logic_vector(11 downto 0);
+		AD2 : OUT std_logic_vector(11 downto 0)
+		);
+	END COMPONENT;
+
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL AD2_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -51,8 +65,10 @@ architecture Behavioral of continous_adc_test is
   SIGNAL start_sig : STD_LOGIC;
   SIGNAL done_sig : STD_LOGIC;
 begin
-	-- INSTANTIATIONS
-	
+	LD0 <= done_sig;
+  LD1 <= start_sig;
+  
+  -- INSTANTIATIONS
 	Inst_binary2bcd: binary2bcd PORT MAP(
 		binary => AD1_sig,
 		bcd => bcd_sig
@@ -70,12 +86,22 @@ begin
 	Inst_sampler: sampler PORT MAP(
 		CLK => CLK,
 		done => done_sig,
-		prescaler => "0000000000000000",
+		prescaler => "0000001111101000", -- scale down by 1 MHz down by 1000 (1 kHz)
 		enable => '1',
 		start => start_sig
 	);
 	
-	
+	Inst_adc_interface: adc_interface PORT MAP(
+		Clk => CLK,
+		Start => start_sig,
+		Done => done_sig,
+		SClk => JA4, -- Sclk pin on the ADC
+		CS => JA1, -- CS pin on ADC
+		D0 => JA2,
+		D1 => JA3,
+		AD1 => AD1_sig,
+		AD2 => AD2_sig
+	);	
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
 	(CA,CB,CC,CD,CE,CF,CG) <= seven_segment_sig;
