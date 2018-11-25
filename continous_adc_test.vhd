@@ -13,18 +13,6 @@ end continous_adc_test;
 
 architecture Behavioral of continous_adc_test is
 	-- COMPONENTS
-	COMPONENT sampler
-	PORT(
-		CLK : IN std_logic;
-		D0 : IN std_logic;
-		D1 : IN std_logic;          
-		CS : OUT std_logic;
-		SCLK : OUT std_logic;
-		AD1_hex : OUT std_logic_vector(11 downto 0);
-		AD2_hex : OUT std_logic_vector(11 downto 0);
-		LD0, LD1 : OUT STD_LOGIC
-		);
-	END COMPONENT;
 	
 	COMPONENT binary2bcd
 	PORT(
@@ -43,32 +31,32 @@ architecture Behavioral of continous_adc_test is
 		dp : OUT std_logic
 		);
 	END COMPONENT;
-	
+  
+  COMPONENT sampler
+	PORT(
+		CLK : IN std_logic;
+		done : IN std_logic;
+		prescaler : IN std_logic_vector(15 downto 0);
+		enable : IN std_logic;          
+		start : OUT std_logic
+		);
+	END COMPONENT;
+
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL AD2_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL bcd_sig : STD_LOGIC_VECTOR (15 DOWNTO 0);
 	SIGNAL seven_segment_sig : STD_LOGIC_VECTOR (6 DOWNTO 0);
 	SIGNAL anode_sig : STD_LOGIC_VECTOR (3 DOWNTO 0);
+  SIGNAL start_sig : STD_LOGIC;
+  SIGNAL done_sig : STD_LOGIC;
 begin
 	-- INSTANTIATIONS
-	Inst_sampler: sampler PORT MAP(
-		CLK => CLK,
-		CS => JA1,
-		SCLK => JA4,
-		D0 => JA2,
-		D1 => JA3,
-		AD1_hex => AD1_sig,
-		AD2_hex => AD2_sig,
-		LD0 => LD0,
-		LD1 => LD1
-	);
 	
 	Inst_binary2bcd: binary2bcd PORT MAP(
 		binary => AD1_sig,
 		bcd => bcd_sig
 	);
-
 
 	Inst_display_driver: display_driver PORT MAP(
 		bcd => bcd_sig,
@@ -78,6 +66,15 @@ begin
 		anodes => anode_sig,
 		dp => DP 
 	);
+  
+	Inst_sampler: sampler PORT MAP(
+		CLK => CLK,
+		done => done_sig,
+		prescaler => "0000000000000000",
+		enable => '1',
+		start => start_sig
+	);
+	
 	
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
