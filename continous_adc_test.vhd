@@ -87,11 +87,20 @@ architecture Behavioral of continous_adc_test is
 		player_y : IN std_logic_vector(9 downto 0);
 		h_pos : IN std_logic_vector(9 downto 0);
 		v_pos : IN std_logic_vector(9 downto 0);
-		RGB_enable : IN std_logic;          
+		RGB_enable : IN std_logic;
+		bird_rom_rgb : IN std_logic_vector(7 downto 0);          
+		bird_rom_adr : OUT std_logic_vector(7 downto 0);
 		RGB_out : OUT std_logic_vector(7 downto 0)
 		);
 	END COMPONENT;
 	
+  COMPONENT bird_rom
+	PORT(
+		adr : IN std_logic_vector(7 downto 0);          
+		dout : OUT std_logic_vector(7 downto 0)
+		);
+	END COMPONENT;
+
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL AD2_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -107,6 +116,8 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL RGB_enable_sig : STD_LOGIC;
 	SIGNAL vga_clock_sig : STD_LOGIC;
 	SIGNAL player_y_12bit : STD_LOGIC_VECTOR (11 DOWNTO 0);
+  SIGNAL bird_adr_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
+  SIGNAL bird_rgb_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
 begin
 	LD0 <= done_sig;
 	LD1 <= start_sig;
@@ -164,15 +175,22 @@ begin
 		vga_clock => vga_clock_sig
 	);
 	
-	Inst_game_render: game_render PORT MAP(
+  Inst_game_render: game_render PORT MAP(
 		vga_clock => vga_clock_sig,
 		player_y => player_y_sig,
 		h_pos => h_pos_sig,
 		v_pos => v_pos_sig,
 		RGB_enable => RGB_enable_sig,
+		bird_rom_adr => bird_adr_sig,
+		bird_rom_rgb => bird_rgb_sig,
 		RGB_out => rgb_out_sig
 	);
 
+	Inst_bird_rom: bird_rom PORT MAP(
+		adr => bird_adr_sig,
+		dout => bird_rgb_sig
+	);
+  
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
 	(CA,CB,CC,CD,CE,CF,CG) <= seven_segment_sig;

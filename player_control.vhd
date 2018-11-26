@@ -6,7 +6,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity player_control is
     Port ( CLK : in STD_LOGIC;
-		   adc_value : in  STD_LOGIC_VECTOR (11 downto 0);
+           adc_value : in  STD_LOGIC_VECTOR (11 downto 0);
            player_y : out  STD_LOGIC_VECTOR (9 downto 0)); -- 10 bits just to make it the same as x coordinates
 end player_control;
 
