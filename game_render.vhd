@@ -34,17 +34,18 @@ begin
            -- Get rgb value from bird_rom
            RGB_out <= bird_rom_rgb;
            bird_adr_counter <= bird_adr_counter + 1;
-        -- Reset bird_adr_counter when display area has been scanned
-        ELSIF bird_adr_counter >= NUM_BIRD_PIXELS THEN
-          bird_adr_counter <= (OTHERS => '0');
         ELSE
           -- Draw background (blue)
           RGB_out <= "01001011";
         END IF;
-        
-        
 			ELSE
 				RGB_out <= (OTHERS => '0'); -- turn all off when not in display area
+        
+        -- Reset bird_adr_counter when display area has been scanned
+        IF v_pos > 480 THEN
+          bird_adr_counter <= (OTHERS => '0');
+        END IF;
+        
 			END IF;
 		END IF;
 	END PROCESS;
