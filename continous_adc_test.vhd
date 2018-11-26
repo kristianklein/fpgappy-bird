@@ -129,7 +129,7 @@ begin
 	Inst_sampler: sampler PORT MAP(
 		CLK => CLK,
 		done => done_sig,
-		prescaler => "0000000000000010", -- scale down by 1 MHz down by 2 (500 kHz)
+		prescaler => "0100000100011010", -- scale down by 1 MHz down by 16666 (60 Hz)
 		enable => '1',
 		start => start_sig
 	);
