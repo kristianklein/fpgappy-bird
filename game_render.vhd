@@ -20,7 +20,7 @@ begin
 	BEGIN
 		IF rising_edge(vga_clock) THEN
 			IF (RGB_enable = '1') THEN
-				IF (v_pos = player_y) THEN
+				IF (v_pos >= player_y AND v_pos < (player_y + 40) AND h_pos >= 10 AND h_pos < 50) THEN
 					RGB_out <= "11100000";
 				ELSE
 					RGB_out <= (OTHERS => '0');
