@@ -130,6 +130,6 @@ begin
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
 	(CA,CB,CC,CD,CE,CF,CG) <= seven_segment_sig;
-  (RED2,RED1,RED0,GRN2,GRN1,GRN0,BLU2,BLU1) <= rgb_out_sig;
+	(RED2,RED1,RED0,GRN2,GRN1,GRN0,BLU2,BLU1) <= rgb_out_sig;
 end Behavioral;
 
