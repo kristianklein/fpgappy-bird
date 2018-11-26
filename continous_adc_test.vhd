@@ -58,34 +58,62 @@ architecture Behavioral of continous_adc_test is
 		AD2 : OUT std_logic_vector(11 downto 0)
 		);
 	END COMPONENT;
-  
-  COMPONENT vga_driver
+	
+
+	COMPONENT player_control
 	PORT(
 		CLK : IN std_logic;
-		reset : IN std_logic;
-		rgb_in : IN std_logic_vector(7 downto 0);          
-		hsync : OUT std_logic;
-		vsync : OUT std_logic;
-		rgb_out : OUT std_logic_vector(7 downto 0)
+		adc_value : IN std_logic_vector(11 downto 0);          
+		player_y : OUT std_logic_vector(9 downto 0)
 		);
 	END COMPONENT;
-
+	
+	COMPONENT vga_driver
+	PORT(
+		CLK : IN std_logic;
+		reset : IN std_logic;          
+		hsync : OUT std_logic;
+		vsync : OUT std_logic;
+		v_pos : OUT std_logic_vector(9 downto 0);
+		h_pos : OUT std_logic_vector(9 downto 0);
+		RGB_enable : OUT std_logic;
+		vga_clock : OUT std_logic
+		);
+	END COMPONENT;
+	
+	COMPONENT game_render
+	PORT(
+		vga_clock : IN std_logic;
+		player_y : IN std_logic_vector(9 downto 0);
+		h_pos : IN std_logic_vector(9 downto 0);
+		v_pos : IN std_logic_vector(9 downto 0);
+		RGB_enable : IN std_logic;          
+		RGB_out : OUT std_logic_vector(7 downto 0)
+		);
+	END COMPONENT;
+	
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL AD2_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL bcd_sig : STD_LOGIC_VECTOR (15 DOWNTO 0);
 	SIGNAL seven_segment_sig : STD_LOGIC_VECTOR (6 DOWNTO 0);
 	SIGNAL anode_sig : STD_LOGIC_VECTOR (3 DOWNTO 0);
-  SIGNAL start_sig : STD_LOGIC;
-  SIGNAL done_sig : STD_LOGIC;
-  SIGNAL rgb_out_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
+	SIGNAL start_sig : STD_LOGIC;
+	SIGNAL done_sig : STD_LOGIC;
+	SIGNAL rgb_out_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
+	SIGNAL player_y_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+	SIGNAL h_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+	SIGNAL v_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+	SIGNAL RGB_enable_sig : STD_LOGIC;
+	SIGNAL vga_clock_sig : STD_LOGIC;
+	SIGNAL player_y_12bit : STD_LOGIC_VECTOR (11 DOWNTO 0);
 begin
 	LD0 <= done_sig;
-  LD1 <= start_sig;
+	LD1 <= start_sig;
   
-  -- INSTANTIATIONS
+	-- INSTANTIATIONS
 	Inst_binary2bcd: binary2bcd PORT MAP(
-		binary => AD1_sig,
+		binary => player_y_12bit,
 		bcd => bcd_sig
 	);
 
@@ -117,19 +145,38 @@ begin
 		AD1 => AD1_sig,
 		AD2 => AD2_sig
 	);
-  
-  Inst_vga_driver: vga_driver PORT MAP(
+	
+	Inst_player_control: player_control PORT MAP(
+		CLK => CLK,
+		adc_value => AD1_sig,
+		player_y => player_y_sig
+	);
+
+
+	Inst_vga_driver: vga_driver PORT MAP(
 		CLK => CLK,
 		reset => '0',
-		rgb_in => AD1_sig(11 DOWNTO 4),
 		hsync => HSYNC,
 		vsync => VSYNC,
-		rgb_out => rgb_out_sig
+		v_pos => v_pos_sig,
+		h_pos => h_pos_sig,
+		RGB_enable => RGB_enable_sig,
+		vga_clock => vga_clock_sig
+	);
+	
+	Inst_game_render: game_render PORT MAP(
+		vga_clock => vga_clock_sig,
+		player_y => player_y_sig,
+		h_pos => h_pos_sig,
+		v_pos => v_pos_sig,
+		RGB_enable => RGB_enable_sig,
+		RGB_out => rgb_out_sig
 	);
 
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
 	(CA,CB,CC,CD,CE,CF,CG) <= seven_segment_sig;
 	(RED2,RED1,RED0,GRN2,GRN1,GRN0,BLU2,BLU1) <= rgb_out_sig;
+	player_y_12bit <= '0' & '0' & player_y_sig;
 end Behavioral;
 

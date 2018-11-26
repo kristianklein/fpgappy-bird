@@ -6,14 +6,16 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity vga_driver is
     Port ( CLK : in  STD_LOGIC;
            reset : in  STD_LOGIC;
-           rgb_in : in STD_LOGIC_VECTOR (7 DOWNTO 0);
            hsync : out  STD_LOGIC;
            vsync : out  STD_LOGIC;
-           rgb_out : out STD_LOGIC_VECTOR (7 DOWNTO 0));
+		   v_pos : out STD_LOGIC_VECTOR (9 DOWNTO 0);
+		   h_pos : out STD_LOGIC_VECTOR (9 DOWNTO 0);
+		   RGB_enable : out STD_LOGIC;
+		   vga_clock : out STD_LOGIC);
 end vga_driver;
 
 architecture Behavioral of vga_driver is
-  SIGNAL vga_clock : STD_LOGIC := '0';
+  SIGNAL vga_clock_sig : STD_LOGIC := '0';
   
   ---- CONSTANTS FOR VGA TIMING
   -- Horisontal
@@ -29,10 +31,10 @@ architecture Behavioral of vga_driver is
   CONSTANT V_SYNCPULSE : INTEGER := 2;
   
   -- COUNTERS
-  SIGNAL h_pos : INTEGER RANGE 0 TO 799 := 0;
-  SIGNAL v_pos : INTEGER RANGE 0 TO 524 := 0;
+  SIGNAL h_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+  SIGNAL v_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
   
-  SIGNAL RGB_enable : STD_LOGIC := '0';
+  SIGNAL RGB_enable_sig : STD_LOGIC := '0';
   
 begin
 
@@ -40,50 +42,50 @@ begin
 clock_25MHz: PROCESS (CLK)
 BEGIN
   IF rising_edge(CLK) THEN
-    vga_clock <= NOT vga_clock;
+    vga_clock_sig <= NOT vga_clock_sig;
   END IF;
 END PROCESS;
 
 -- Counter for horisontal position
-horisontal_scan: PROCESS (vga_clock, reset)
+horisontal_scan: PROCESS (vga_clock_sig, reset)
 BEGIN
   IF (reset = '1') THEN
-    h_pos <= 0;
-  ELSIF rising_edge(vga_clock) THEN
-    IF (h_pos = 799) THEN -- Reached end of line
-      h_pos <= 0;
+    h_pos_sig <= (OTHERS => '0');
+  ELSIF rising_edge(vga_clock_sig) THEN
+    IF (h_pos_sig >= 799) THEN -- Reached end of line
+      h_pos_sig <= (OTHERS => '0');
     ELSE
-      h_pos <= h_pos + 1;
+      h_pos_sig <= h_pos_sig + 1;
     END IF;
   END IF;
 END PROCESS;
 
 -- Counter for vertical position
-vertical_scan: PROCESS (vga_clock, reset)
+vertical_scan: PROCESS (vga_clock_sig, reset)
 BEGIN
   IF (reset = '1') THEN
-    v_pos <= 0;
-  ELSIF rising_edge(vga_clock) THEN
-    IF (h_pos = H_BACKPORCH + H_DISPLAY + H_FRONTPORCH + H_SYNCPULSE) THEN -- Only increment vertical counter when horisontal counter reaches end of line
-      IF (v_pos = V_BACKPORCH + V_DISPLAY + V_FRONTPORCH + V_SYNCPULSE) THEN
-        v_pos <= 0;
+    v_pos_sig <= (OTHERS => '0');
+  ELSIF rising_edge(vga_clock_sig) THEN
+    IF (h_pos_sig >= H_BACKPORCH + H_DISPLAY + H_FRONTPORCH + H_SYNCPULSE) THEN -- Only increment vertical counter when horisontal counter reaches end of line
+      IF (v_pos_sig >= V_BACKPORCH + V_DISPLAY + V_FRONTPORCH + V_SYNCPULSE) THEN
+        v_pos_sig <= (OTHERS => '0');
       ELSE
-        v_pos <= v_pos + 1;
+        v_pos_sig <= v_pos_sig + 1;
       END IF;
     END IF;
   END IF;
 END PROCESS;
 
 -- Horisontal synchronisation
-horisontal_sync: PROCESS (vga_clock, reset)
+horisontal_sync: PROCESS (vga_clock_sig, reset)
 BEGIN
   IF (reset = '1') THEN
     hsync <= '0';
-  ELSIF rising_edge(vga_clock) THEN
+  ELSIF rising_edge(vga_clock_sig) THEN
     -- hsync should be high while scanning back porch and display area and front porch,
     -- and low when scanning the sync pulse area
     -- Here I have the display area from count 0-H_DISPLAY to make it easier for myself
-    IF (h_pos <= H_DISPLAY + H_FRONTPORCH OR h_pos > H_DISPLAY + H_FRONTPORCH + H_SYNCPULSE) THEN
+    IF (h_pos_sig <= H_DISPLAY + H_FRONTPORCH OR h_pos_sig > H_DISPLAY + H_FRONTPORCH + H_SYNCPULSE) THEN
       hsync <= '1';
     ELSE
       hsync <= '0';
@@ -92,15 +94,15 @@ BEGIN
 END PROCESS;
 
 -- Vertical synchronisation
-vertical_sync: PROCESS (vga_clock, reset)
+vertical_sync: PROCESS (vga_clock_sig, reset)
 BEGIN
   IF (reset = '1') THEN
     vsync <= '0';
-  ELSIF rising_edge(vga_clock) THEN
+  ELSIF rising_edge(vga_clock_sig) THEN
     -- vsync should be high while scanning back porch and display area and front porch,
     -- and low when scanning the sync pulse area (same as horisontal)
     -- Here I have the display area from count 0-V_DISPLAY to make it easier for myself
-    IF (v_pos <= V_DISPLAY + V_FRONTPORCH OR v_pos > V_DISPLAY + V_FRONTPORCH + V_SYNCPULSE) THEN
+    IF (v_pos_sig <= V_DISPLAY + V_FRONTPORCH OR v_pos_sig > V_DISPLAY + V_FRONTPORCH + V_SYNCPULSE) THEN
       vsync <= '1';
     ELSE
       vsync <= '0';
@@ -109,31 +111,24 @@ BEGIN
 END PROCESS;
 
 -- Control when the RGB pins can be high (only in the display area)
-RGB_control: PROCESS (vga_clock, reset, v_pos, h_pos)
+RGB_control: PROCESS (vga_clock_sig, reset, v_pos_sig, h_pos_sig)
 BEGIN
   IF (reset = '1') THEN
-    RGB_enable <= '0';
-  ELSIF rising_edge(vga_clock) THEN
-    IF (h_pos <= H_DISPLAY AND v_pos <= V_DISPLAY) THEN
-      RGB_enable <= '1';
+    RGB_enable_sig <= '0';
+  ELSIF rising_edge(vga_clock_sig) THEN
+    IF (h_pos_sig <= H_DISPLAY AND v_pos_sig <= V_DISPLAY) THEN
+      RGB_enable_sig <= '1';
     ELSE
-      RGB_enable <= '0';
+      RGB_enable_sig <= '0';
     END IF;
   END IF;
 END PROCESS;
 
-draw_display: PROCESS (vga_clock, reset, v_pos, h_pos, RGB_enable)
-BEGIN
-  IF (reset = '1') THEN
-    rgb_out <= "00000000";
-  ELSIF rising_edge(vga_clock) THEN
-    IF (RGB_enable = '1') THEN
-      rgb_out <= rgb_in;
-    ELSE
-      rgb_out <= "00000000";
-    END IF;
-  END IF;
-END PROCESS;
+-- Map signals to outputs
+RGB_enable <= RGB_enable_sig;
+v_pos <= v_pos_sig;
+h_pos <= h_pos_sig;
+vga_clock <= vga_clock_sig;
 
 end Behavioral;
 
