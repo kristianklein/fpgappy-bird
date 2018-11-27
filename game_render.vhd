@@ -38,17 +38,28 @@ begin
            bird_adr_counter <= bird_adr_counter + 1;
 		-- Render obstacle
 		ELSIF h_pos >= obstacle_x AND -- Find correct horisontal position
-			  h_pos < obstacle_x + 40
+			  h_pos <= obstacle_x + 40 -- bars 40 pixels wide
 		THEN
-			IF v_pos < obstacle_y OR -- Make 30 pixel gap
-			   v_pos > obstacle_y + 30
+			IF v_pos <= obstacle_y OR -- Make 40 pixel gap
+			   v_pos >= obstacle_y + 40
 			THEN
-				RGB_out <= "00011100";
+        -- This is the entire obstacle draw area
+        
+        -- Draw outline
+        IF v_pos = obstacle_y OR
+           v_pos = obstacle_y+40 OR 
+           h_pos = obstacle_x OR
+           h_pos = obstacle_x+40
+        THEN
+          RGB_OUT <= "00000000";
+        ELSE
+          RGB_out <= "00010000";
+        END IF;
 			END IF;
 		
         ELSE
           -- Draw background (blue)
-          RGB_out <= "01001011";
+          RGB_out <= "00010011";
         END IF;
 			ELSE
 				RGB_out <= (OTHERS => '0'); -- turn all off when not in display area

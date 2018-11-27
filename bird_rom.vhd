@@ -7,7 +7,7 @@ entity bird_rom is
 end bird_rom;
 
 architecture Behavioral of bird_rom is
-  CONSTANT BACKGROUND : STD_LOGIC_VECTOR (7 DOWNTO 0) := "01001011";
+  CONSTANT BLUE : STD_LOGIC_VECTOR (7 DOWNTO 0) := "00010011";
   CONSTANT BLACK : STD_LOGIC_VECTOR (7 DOWNTO 0) := "00000000";
   CONSTANT WHITE : STD_LOGIC_VECTOR (7 DOWNTO 0) := "11111111";
   CONSTANT YELLOW : STD_LOGIC_VECTOR (7 DOWNTO 0) := "11111100";
@@ -164,7 +164,7 @@ begin
             BLACK WHEN "11000010",
             BLACK WHEN "11000011",
             BLACK WHEN "11000100",
-            BACKGROUND WHEN OTHERS;
+            BLUE WHEN OTHERS;
     
 
 end Behavioral;
