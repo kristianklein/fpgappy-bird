@@ -6,6 +6,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity game_render is
     Port ( vga_clock : in  STD_LOGIC;
            player_y : in  STD_LOGIC_VECTOR (9 downto 0);
+		   obstacle_x : in STD_LOGIC_VECTOR (9 DOWNTO 0);
+		   obstacle_y : in STD_LOGIC_VECTOR (9 DOWNTO 0);
            h_pos : in  STD_LOGIC_VECTOR (9 downto 0);
            v_pos : in  STD_LOGIC_VECTOR (9 downto 0);
            RGB_enable : in  STD_LOGIC;
@@ -34,6 +36,16 @@ begin
            -- Get rgb value from bird_rom
            RGB_out <= bird_rom_rgb;
            bird_adr_counter <= bird_adr_counter + 1;
+		-- Render obstacle
+		ELSIF h_pos >= obstacle_x AND -- Find correct horisontal position
+			  h_pos < obstacle_x + 40
+		THEN
+			IF v_pos < obstacle_y OR -- Make 30 pixel gap
+			   v_pos > obstacle_y + 30
+			THEN
+				RGB_out <= "00011100";
+			END IF;
+		
         ELSE
           -- Draw background (blue)
           RGB_out <= "01001011";

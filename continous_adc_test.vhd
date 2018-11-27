@@ -85,6 +85,8 @@ architecture Behavioral of continous_adc_test is
 	PORT(
 		vga_clock : IN std_logic;
 		player_y : IN std_logic_vector(9 downto 0);
+		obstacle_x : in STD_LOGIC_VECTOR (9 DOWNTO 0);
+	    obstacle_y : in STD_LOGIC_VECTOR (9 DOWNTO 0);
 		h_pos : IN std_logic_vector(9 downto 0);
 		v_pos : IN std_logic_vector(9 downto 0);
 		RGB_enable : IN std_logic;
@@ -116,8 +118,8 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL RGB_enable_sig : STD_LOGIC;
 	SIGNAL vga_clock_sig : STD_LOGIC;
 	SIGNAL player_y_12bit : STD_LOGIC_VECTOR (11 DOWNTO 0);
-  SIGNAL bird_adr_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
-  SIGNAL bird_rgb_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
+	SIGNAL bird_adr_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
+	SIGNAL bird_rgb_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
 begin
 	LD0 <= done_sig;
 	LD1 <= start_sig;
@@ -178,6 +180,8 @@ begin
   Inst_game_render: game_render PORT MAP(
 		vga_clock => vga_clock_sig,
 		player_y => player_y_sig,
+		obstacle_x => "0101000000", -- 640 max
+		obstacle_y => "0011001000", -- 440 max
 		h_pos => h_pos_sig,
 		v_pos => v_pos_sig,
 		RGB_enable => RGB_enable_sig,
