@@ -103,6 +103,23 @@ architecture Behavioral of continous_adc_test is
 		);
 	END COMPONENT;
 
+
+	COMPONENT game_timer
+	PORT(
+		CLK : IN std_logic;          
+		points : OUT std_logic_vector(11 downto 0);
+		game_clock : OUT std_logic
+		);
+	END COMPONENT;
+  
+	COMPONENT obstacle
+	PORT(
+		game_clock : IN std_logic;          
+		obstacle_x : OUT std_logic_vector(9 downto 0);
+		obstacle_y : OUT std_logic_vector(9 downto 0)
+		);
+	END COMPONENT;
+
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL AD2_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -113,6 +130,8 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL done_sig : STD_LOGIC;
 	SIGNAL rgb_out_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
 	SIGNAL player_y_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+  SIGNAL obstacle_x_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+  SIGNAL obstacle_y_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
 	SIGNAL h_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
 	SIGNAL v_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
 	SIGNAL RGB_enable_sig : STD_LOGIC;
@@ -120,8 +139,10 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL player_y_12bit : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL bird_adr_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
 	SIGNAL bird_rgb_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
+  SIGNAL game_clock_sig : STD_LOGIC;
+  SIGNAL points_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 begin
-	LD0 <= done_sig;
+	LD0 <= game_clock_sig;
 	LD1 <= start_sig;
   
 	-- INSTANTIATIONS
@@ -180,8 +201,8 @@ begin
   Inst_game_render: game_render PORT MAP(
 		vga_clock => vga_clock_sig,
 		player_y => player_y_sig,
-		obstacle_x => "0101000000", -- 640 max
-		obstacle_y => "0011001000", -- 440 max
+		obstacle_x => obstacle_x_sig, -- 640 max
+		obstacle_y => obstacle_y_sig, -- 440 max
 		h_pos => h_pos_sig,
 		v_pos => v_pos_sig,
 		RGB_enable => RGB_enable_sig,
@@ -193,6 +214,18 @@ begin
 	Inst_bird_rom: bird_rom PORT MAP(
 		adr => bird_adr_sig,
 		dout => bird_rgb_sig
+	);
+  
+  Inst_game_timer: game_timer PORT MAP(
+		CLK => CLK,
+		points => points_sig,
+		game_clock => game_clock_sig
+	);
+
+	Inst_obstacle: obstacle PORT MAP(
+		game_clock => game_clock_sig, -- change this to game_clock_sig
+		obstacle_x => obstacle_x_sig,
+		obstacle_y => obstacle_y_sig
 	);
   
 	-- Mapping signals to outputs

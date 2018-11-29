@@ -10,9 +10,9 @@ entity game_timer is
 end game_timer;
 
 architecture Behavioral of game_timer is
-	SIGNAL outer_prescaler : STD_LOGIC_VECTOR (11 DOWNTO 0) := (OTHERS => '0');
+	SIGNAL outer_prescaler : STD_LOGIC_VECTOR (23 DOWNTO 0) := (OTHERS => '0');
   SIGNAL inner_prescaler : STD_LOGIC_VECTOR (6 DOWNTO 0) := (OTHERS => '0');
-	SIGNAL level_counter : STD_LOGIC_VECTOR (4 DOWNTO 0) := (OTHERS => '0'); -- Max level: 20
+	SIGNAL level_counter : STD_LOGIC_VECTOR (7 DOWNTO 0) := (OTHERS => '0'); -- Max level: 20
   SIGNAL obstacles_passed : STD_LOGIC_VECTOR (1 DOWNTO 0) := (OTHERS => '0');
   SIGNAL points_sig : STD_LOGIC_VECTOR (11 DOWNTO 0) := (OTHERS => '0');
   SIGNAL display_counter : STD_LOGIC_VECTOR (9 DOWNTO 0) := (OTHERS => '0');
@@ -29,11 +29,12 @@ begin
 		-- Increase the game_clock frequency every third screen
     -- by increasing the level-counter
 		IF rising_edge(CLK) THEN
-      IF (outer_prescaler > 15624) THEN -- 3200 Hz (outer clock)
+      IF (outer_prescaler > 15624) THEN -- 3200 Hz (outer clock) 15624
         
         outer_prescaler <= (OTHERS => '0');
                 
-        IF (inner_prescaler >= (100 - level_counter)) THEN
+        IF (inner_prescaler >= (50 - level_counter)) THEN
+          inner_prescaler <= (OTHERS => '0');
           game_clock_sig <= NOT game_clock_sig;
           
           -- Grant 1 point for each full screen that rolls by (= one obstacle)
@@ -47,7 +48,7 @@ begin
           
           
           -- Increase level if obstacles_passed > 2
-          IF (obstacles_passed > 2) THEN
+          IF (obstacles_passed > 0) THEN
             obstacles_passed <= (OTHERS => '0');
             level_counter <= level_counter + 1;
           END IF;
