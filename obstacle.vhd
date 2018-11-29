@@ -25,7 +25,6 @@ begin
         x_sig <= x_sig - 1;
       END IF;
     END IF;
-  
   END PROCESS;
 
 end Behavioral;

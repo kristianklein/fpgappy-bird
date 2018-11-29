@@ -63,6 +63,7 @@ architecture Behavioral of continous_adc_test is
 	COMPONENT player_control
 	PORT(
 		CLK : IN std_logic;
+    collision : IN STD_LOGIC;
 		adc_value : IN std_logic_vector(11 downto 0);          
 		player_y : OUT std_logic_vector(9 downto 0)
 		);
@@ -106,7 +107,8 @@ architecture Behavioral of continous_adc_test is
 
 	COMPONENT game_timer
 	PORT(
-		CLK : IN std_logic;          
+		CLK : IN std_logic;
+    collision : in STD_LOGIC;
 		points : OUT std_logic_vector(11 downto 0);
 		game_clock : OUT std_logic
 		);
@@ -117,6 +119,15 @@ architecture Behavioral of continous_adc_test is
 		game_clock : IN std_logic;          
 		obstacle_x : OUT std_logic_vector(9 downto 0);
 		obstacle_y : OUT std_logic_vector(9 downto 0)
+		);
+	END COMPONENT;
+  
+ 	COMPONENT collision_detector
+	PORT(
+		player_y : IN std_logic_vector(9 downto 0);
+		obstacle_x : IN std_logic_vector(9 downto 0);
+		obstacle_y : IN std_logic_vector(9 downto 0);          
+		collision : OUT std_logic
 		);
 	END COMPONENT;
 
@@ -141,8 +152,9 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL bird_rgb_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
   SIGNAL game_clock_sig : STD_LOGIC;
   SIGNAL points_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
+  SIGNAL collision_sig : STD_LOGIC;
 begin
-	LD0 <= game_clock_sig;
+	LD0 <= collision_sig;
 	LD1 <= start_sig;
   
 	-- INSTANTIATIONS
@@ -182,6 +194,7 @@ begin
 	
 	Inst_player_control: player_control PORT MAP(
 		CLK => CLK,
+    collision => collision_sig,
 		adc_value => AD1_sig,
 		player_y => player_y_sig
 	);
@@ -218,6 +231,7 @@ begin
   
   Inst_game_timer: game_timer PORT MAP(
 		CLK => CLK,
+    collision => collision_sig,
 		points => points_sig,
 		game_clock => game_clock_sig
 	);
@@ -227,6 +241,14 @@ begin
 		obstacle_x => obstacle_x_sig,
 		obstacle_y => obstacle_y_sig
 	);
+  
+ 	Inst_collision_detector: collision_detector PORT MAP(
+		player_y => player_y_sig,
+		obstacle_x => obstacle_x_sig,
+		obstacle_y => obstacle_y_sig,
+		collision => collision_sig
+	);
+
   
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;

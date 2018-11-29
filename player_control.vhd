@@ -6,6 +6,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity player_control is
     Port ( CLK : in STD_LOGIC;
+           collision : in STD_LOGIC;
            adc_value : in  STD_LOGIC_VECTOR (11 downto 0);
            player_y : out  STD_LOGIC_VECTOR (9 downto 0)); -- 10 bits just to make it the same as x coordinates
 end player_control;
@@ -22,7 +23,7 @@ begin
 	map_position: PROCESS (CLK)
 	BEGIN
 		IF rising_edge(CLK) THEN
-			IF (counter >= prescaler) THEN
+			IF (counter >= prescaler AND collision = '0') THEN
 				-- Map ADC value to player y-position on screen
 				-- y-position can be 0 to (480 - player_height)
 				-- Max 9-bit ADC value is 511, so we subtract 
