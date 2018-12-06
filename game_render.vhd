@@ -36,39 +36,34 @@ begin
            -- Get rgb value from bird_rom
            RGB_out <= bird_rom_rgb;
            bird_adr_counter <= bird_adr_counter + 1;
-		-- Render obstacle
-		ELSIF h_pos >= obstacle_x AND -- Find correct horisontal position
-			  h_pos <= obstacle_x + 40 -- bars 40 pixels wide
-		THEN
-			IF v_pos <= obstacle_y OR -- Make 40 pixel gap
-			   v_pos >= obstacle_y + 40
-			THEN
-        -- This is the entire obstacle draw area
-        
-        -- Draw outline
-        IF v_pos = obstacle_y OR
-           v_pos = obstacle_y+40 OR 
-           h_pos = obstacle_x OR
-           h_pos = obstacle_x+40
-        THEN
-          RGB_OUT <= "00000000";
-        ELSE
-          RGB_out <= "00010000";
-        END IF;
-			END IF;
-		
+        -- Render obstacle
+        ELSIF h_pos >= obstacle_x AND -- Find correct horisontal position
+              h_pos <= obstacle_x + 40 AND -- bars 40 pixels wide
+			  (v_pos <= obstacle_y OR
+			   v_pos >= obstacle_y + 40)
+          THEN
+		  -- Draw outline
+		  IF v_pos = obstacle_y OR
+			 v_pos = obstacle_y+40 OR 
+			 h_pos = obstacle_x OR
+			 h_pos = obstacle_x+40
+		  THEN
+			RGB_OUT <= "00000000";
+		  ELSE
+			RGB_out <= "00010000";
+		  END IF;
         ELSE
           -- Draw background (blue)
           RGB_out <= "00010011";
         END IF;
-			ELSE
-				RGB_out <= (OTHERS => '0'); -- turn all off when not in display area
+      
+      ELSE
+		RGB_out <= (OTHERS => '0'); -- turn all off when not in display area
         
         -- Reset bird_adr_counter when display area has been scanned
         IF v_pos > 480 THEN
           bird_adr_counter <= (OTHERS => '0');
         END IF;
-        
 			END IF;
 		END IF;
 	END PROCESS;
