@@ -120,7 +120,7 @@ architecture Behavioral of continous_adc_test is
 		game_clock : IN std_logic;
 		reset : IN std_logic;
 		obstacle_x : OUT std_logic_vector(9 downto 0);
-		obstacle_y : OUT std_logic_vector(9 downto 0)
+		generate_random_y : OUT std_logic
 		);
 	END COMPONENT;
   
@@ -152,6 +152,16 @@ architecture Behavioral of continous_adc_test is
 		toggle : OUT std_logic
 		);
 	END COMPONENT;
+	
+	COMPONENT random
+	PORT(
+		CLK : IN std_logic;
+		start : IN std_logic;          
+		random_number : OUT std_logic_vector(9 downto 0)
+		);
+	END COMPONENT;
+
+	
 
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -178,9 +188,10 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL button_sig : STD_LOGIC;
 	SIGNAL enable_sig : STD_LOGIC;
 	SIGNAL reset_sig : STD_LOGIC;
+	SIGNAL random_start_sig : STD_LOGIC;
 begin
 	LD0 <= enable_sig;
-	LD1 <= button_sig;
+	LD1 <= random_start_sig;
   
 	-- INSTANTIATIONS
 	Inst_binary2bcd: binary2bcd PORT MAP(
@@ -266,7 +277,7 @@ begin
 		game_clock => game_clock_sig, -- change this to game_clock_sig
 		reset => reset_sig,
 		obstacle_x => obstacle_x_sig,
-		obstacle_y => obstacle_y_sig
+		generate_random_y => random_start_sig
 	);
   
  	Inst_collision_detector: collision_detector PORT MAP(
@@ -292,6 +303,12 @@ begin
 		toggle => open
 	);
   
+	Inst_random: random PORT MAP(
+		CLK => CLK,
+		start => random_start_sig,
+		random_number => obstacle_y_sig
+	);
+	
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
 	(CA,CB,CC,CD,CE,CF,CG) <= seven_segment_sig;

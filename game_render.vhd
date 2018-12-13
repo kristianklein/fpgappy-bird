@@ -21,7 +21,7 @@ architecture Behavioral of game_render is
   CONSTANT NUM_BIRD_PIXELS : INTEGER := 203; -- 17 x 12
 begin
 	-- Map signals to outputs
-  bird_rom_adr <= bird_adr_counter;
+	bird_rom_adr <= bird_adr_counter;
   
 	draw: PROCESS (vga_clock)
 	BEGIN
