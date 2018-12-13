@@ -13,6 +13,7 @@ end obstacle;
 architecture Behavioral of obstacle is
    SIGNAL x_sig : STD_LOGIC_VECTOR(9 DOWNTO 0) := "1010000000"; -- 640
    SIGNAL y_sig : STD_LOGIC_VECTOR(9 DOWNTO 0) := "0001000000"; -- 128 for testing
+   SIGNAL obstacle_count : STD_LOGIC_VECTOR (7 DOWNTO 0) := (OTHERS => '0');
 begin
   obstacle_x <= x_sig;
   obstacle_y <= y_sig;

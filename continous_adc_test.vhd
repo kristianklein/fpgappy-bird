@@ -184,7 +184,7 @@ begin
   
 	-- INSTANTIATIONS
 	Inst_binary2bcd: binary2bcd PORT MAP(
-		binary => player_y_12bit,
+		binary => points_sig,--player_y_12bit,
 		bcd => bcd_sig
 	);
 
