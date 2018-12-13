@@ -5,6 +5,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity obstacle is
     Port ( game_clock : in  STD_LOGIC;
+		   reset : in STD_LOGIC;
            obstacle_x : out  STD_LOGIC_VECTOR (9 downto 0);
            obstacle_y : out  STD_LOGIC_VECTOR (9 downto 0));
 end obstacle;
@@ -18,13 +19,16 @@ begin
 
   PROCESS (game_clock)
   BEGIN
-    IF rising_edge(game_clock) THEN
-      IF (x_sig < 1) THEN
+    IF (reset = '1') THEN
+		x_sig <= "1010000000";
+	ELSIF rising_edge(game_clock) THEN
+	  IF (x_sig < 1) THEN
         x_sig <= "1010000000";
       ELSE
         x_sig <= x_sig - 1;
       END IF;
-    END IF;
+	END IF;
+	
   END PROCESS;
 
 end Behavioral;

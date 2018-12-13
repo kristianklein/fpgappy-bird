@@ -5,38 +5,28 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity game_timer is
     Port ( CLK : in  STD_LOGIC;
-           collision : in STD_LOGIC;
+		   enable : in STD_LOGIC;
+		   reset : in STD_LOGIC;
            points : out  STD_LOGIC_VECTOR (11 downto 0);
            game_clock : out  STD_LOGIC);
 end game_timer;
 
 architecture Behavioral of game_timer is
 	SIGNAL outer_prescaler : STD_LOGIC_VECTOR (23 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL inner_prescaler : STD_LOGIC_VECTOR (6 DOWNTO 0) := (OTHERS => '0');
+	SIGNAL inner_prescaler : STD_LOGIC_VECTOR (6 DOWNTO 0) := (OTHERS => '0');
 	SIGNAL level_counter : STD_LOGIC_VECTOR (7 DOWNTO 0) := (OTHERS => '0'); -- Max level: 20
-  SIGNAL obstacles_passed : STD_LOGIC_VECTOR (1 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL points_sig : STD_LOGIC_VECTOR (11 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL display_counter : STD_LOGIC_VECTOR (9 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL game_clock_sig : STD_LOGIC := '0';
-  TYPE state_type IS (idle, running, game_over);
-  SIGNAL state : state_type := running;
+	SIGNAL obstacles_passed : STD_LOGIC_VECTOR (1 DOWNTO 0) := (OTHERS => '0');
+	SIGNAL points_sig : STD_LOGIC_VECTOR (11 DOWNTO 0) := (OTHERS => '0');
+	SIGNAL display_counter : STD_LOGIC_VECTOR (9 DOWNTO 0) := (OTHERS => '0');
+	SIGNAL game_clock_sig : STD_LOGIC := '0';
 begin
   -- Map signals to outputs
   game_clock <= game_clock_sig;
   points <= points_sig;
 
-	PROCESS (CLK)
+	PROCESS (CLK, enable, reset)
 	BEGIN
-    IF rising_edge(CLK) THEN
-    CASE state IS
-      WHEN idle =>
-      
-      -- RUNNING
-      WHEN running =>
-        IF (collision = '1') THEN
-          state <= game_over;
-        END IF;
-        
+    IF (rising_edge(CLK) AND enable = '1') THEN    
         -- Scale down 50 MHz clock to of 3200 Hz (160 Hz * 20)
         -- (4 seconds for an entire screen to roll by at 160 Hz)
         -- Increase the game_clock frequency every third screen
@@ -72,12 +62,9 @@ begin
             outer_prescaler <= outer_prescaler + 1;
           END IF;
         
-      
-      -- GAME OVER
-      WHEN game_over =>
-      
-    END CASE;
-		END IF;
+	ELSIF (reset = '1') THEN
+		-- TODO: Reset all relevant variables
+	END IF;
 	END PROCESS;
 
 end Behavioral;

@@ -5,6 +5,7 @@ entity continous_adc_test is
     Port ( CLK : in  STD_LOGIC;
            JA1,JA4 : out  STD_LOGIC; -- CS and SCLK
            JA2,JA3 : in  STD_LOGIC; -- D0 and D1
+		   BTN0 : in STD_LOGIC;
            AN0,AN1,AN2,AN3 : out  STD_LOGIC;
            CA,CB,CC,CD,CE,CF,CG : out  STD_LOGIC;
            DP : out  STD_LOGIC;
@@ -59,11 +60,10 @@ architecture Behavioral of continous_adc_test is
 		);
 	END COMPONENT;
 	
-
 	COMPONENT player_control
 	PORT(
 		CLK : IN std_logic;
-    collision : IN STD_LOGIC;
+		collision : IN STD_LOGIC;
 		adc_value : IN std_logic_vector(11 downto 0);          
 		player_y : OUT std_logic_vector(9 downto 0)
 		);
@@ -108,7 +108,8 @@ architecture Behavioral of continous_adc_test is
 	COMPONENT game_timer
 	PORT(
 		CLK : IN std_logic;
-    collision : in STD_LOGIC;
+		enable : in STD_LOGIC;
+		reset : in STD_LOGIC;
 		points : OUT std_logic_vector(11 downto 0);
 		game_clock : OUT std_logic
 		);
@@ -116,7 +117,8 @@ architecture Behavioral of continous_adc_test is
   
 	COMPONENT obstacle
 	PORT(
-		game_clock : IN std_logic;          
+		game_clock : IN std_logic;
+		reset : IN std_logic;
 		obstacle_x : OUT std_logic_vector(9 downto 0);
 		obstacle_y : OUT std_logic_vector(9 downto 0)
 		);
@@ -130,6 +132,26 @@ architecture Behavioral of continous_adc_test is
 		collision : OUT std_logic
 		);
 	END COMPONENT;
+	
+	COMPONENT game_fsm
+	PORT(
+		CLK : IN STD_LOGIC;
+		button_pulse : IN std_logic;
+		collision : IN std_logic;          
+		reset : OUT std_logic;
+		enable : OUT std_logic
+		);
+	END COMPONENT;
+
+	COMPONENT debouncer
+	PORT(
+		CLK : IN std_logic;
+		button_raw : IN std_logic;          
+		pulse : OUT std_logic;
+		debounced : OUT std_logic;
+		toggle : OUT std_logic
+		);
+	END COMPONENT;
 
 	-- SIGNALS
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -141,8 +163,8 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL done_sig : STD_LOGIC;
 	SIGNAL rgb_out_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
 	SIGNAL player_y_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
-  SIGNAL obstacle_x_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
-  SIGNAL obstacle_y_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+	SIGNAL obstacle_x_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
+	SIGNAL obstacle_y_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
 	SIGNAL h_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
 	SIGNAL v_pos_sig : STD_LOGIC_VECTOR (9 DOWNTO 0);
 	SIGNAL RGB_enable_sig : STD_LOGIC;
@@ -150,12 +172,15 @@ architecture Behavioral of continous_adc_test is
 	SIGNAL player_y_12bit : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL bird_adr_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
 	SIGNAL bird_rgb_sig : STD_LOGIC_VECTOR (7 DOWNTO 0);
-  SIGNAL game_clock_sig : STD_LOGIC;
-  SIGNAL points_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
-  SIGNAL collision_sig : STD_LOGIC;
+	SIGNAL game_clock_sig : STD_LOGIC;
+	SIGNAL points_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
+	SIGNAL collision_sig : STD_LOGIC;
+	SIGNAL button_sig : STD_LOGIC;
+	SIGNAL enable_sig : STD_LOGIC;
+	SIGNAL reset_sig : STD_LOGIC;
 begin
-	LD0 <= collision_sig;
-	LD1 <= start_sig;
+	LD0 <= enable_sig;
+	LD1 <= button_sig;
   
 	-- INSTANTIATIONS
 	Inst_binary2bcd: binary2bcd PORT MAP(
@@ -194,7 +219,7 @@ begin
 	
 	Inst_player_control: player_control PORT MAP(
 		CLK => CLK,
-    collision => collision_sig,
+		collision => collision_sig,
 		adc_value => AD1_sig,
 		player_y => player_y_sig
 	);
@@ -231,13 +256,15 @@ begin
   
   Inst_game_timer: game_timer PORT MAP(
 		CLK => CLK,
-    collision => collision_sig,
+		enable => enable_sig,
+		reset => reset_sig,
 		points => points_sig,
 		game_clock => game_clock_sig
 	);
 
 	Inst_obstacle: obstacle PORT MAP(
 		game_clock => game_clock_sig, -- change this to game_clock_sig
+		reset => reset_sig,
 		obstacle_x => obstacle_x_sig,
 		obstacle_y => obstacle_y_sig
 	);
@@ -248,7 +275,22 @@ begin
 		obstacle_y => obstacle_y_sig,
 		collision => collision_sig
 	);
-
+	
+	Inst_game_fsm: game_fsm PORT MAP(
+		CLK => CLK,
+		button_pulse => button_sig,
+		collision => collision_sig,
+		reset => reset_sig,
+		enable => enable_sig 
+	);
+	
+	Inst_debouncer: debouncer PORT MAP(
+		CLK => CLK,
+		button_raw => BTN0,
+		pulse => button_sig,
+		debounced => open,
+		toggle => open
+	);
   
 	-- Mapping signals to outputs
 	(AN3,AN2,AN1,AN0) <= anode_sig;
