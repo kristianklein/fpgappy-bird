@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity continous_adc_test is
+entity fpgappybird_top is
     Port ( CLK : in  STD_LOGIC;
            JA1,JA4 : out  STD_LOGIC; -- CS and SCLK
            JA2,JA3 : in  STD_LOGIC; -- D0 and D1
@@ -14,9 +14,9 @@ entity continous_adc_test is
            GRN0,GRN1,GRN2 : OUT STD_LOGIC;
            BLU1,BLU2 : OUT STD_LOGIC;
            HSYNC,VSYNC : OUT STD_LOGIC);
-end continous_adc_test;
+end fpgappybird_top;
 
-architecture Behavioral of continous_adc_test is
+architecture Behavioral of fpgappybird_top is
 	-- COMPONENTS
 	COMPONENT binary2bcd
 	PORT(
