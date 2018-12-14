@@ -2,18 +2,18 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity fpgappybird_top is
-    Port ( CLK : in  STD_LOGIC;
-           JA1,JA4 : out  STD_LOGIC; -- CS and SCLK
-           JA2,JA3 : in  STD_LOGIC; -- D0 and D1
-		   BTN0 : in STD_LOGIC;
-           AN0,AN1,AN2,AN3 : out  STD_LOGIC;
-           CA,CB,CC,CD,CE,CF,CG : out  STD_LOGIC;
-           DP : out  STD_LOGIC;
-           LD0, LD1 : OUT STD_LOGIC;
-           RED0,RED1,RED2 : OUT STD_LOGIC;
-           GRN0,GRN1,GRN2 : OUT STD_LOGIC;
-           BLU1,BLU2 : OUT STD_LOGIC;
-           HSYNC,VSYNC : OUT STD_LOGIC);
+	Port (	CLK : in  STD_LOGIC;
+			JA1,JA4 : out  STD_LOGIC; -- CS and SCLK
+			JA2,JA3 : in  STD_LOGIC; -- D0 and D1
+			BTN0 : in STD_LOGIC;
+			AN0,AN1,AN2,AN3 : out  STD_LOGIC;
+			CA,CB,CC,CD,CE,CF,CG : out  STD_LOGIC;
+			DP : out  STD_LOGIC;
+			LD0, LD1 : OUT STD_LOGIC;
+			RED0,RED1,RED2 : OUT STD_LOGIC;
+			GRN0,GRN1,GRN2 : OUT STD_LOGIC;
+			BLU1,BLU2 : OUT STD_LOGIC;
+			HSYNC,VSYNC : OUT STD_LOGIC);
 end fpgappybird_top;
 
 architecture Behavioral of fpgappybird_top is
