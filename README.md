@@ -59,7 +59,33 @@ game screen on the display. To draw the player and obstacle sprites on the scree
 the obstacle's current x- and y-position, and the player's y-position (constant x-position) as input.
 The player sprite ("Flappy bird") is drawn from the bird_rom module, which contains a 17x12 pixel bitmap.
 
-## Game state machine and game clock
+## Game state machine and game timer
+The game_FSM module is a finite state machine that determines the current state of the game.
+These are idle, running, paused and game_over. When the system starts the game is in the idle start.
+When the user presses the pushbutton BTN0 on the board, the state changes to running and the obstacle
+starts rolling on the screen. If the button is pressed while the game is running, the game can be
+paused/unpaused. When the player collides with the obstacle the game is over and can be reset by
+pressing the button.
 
+The game speed is controlled by the game_timer module. This clock controls how fast the obstacle is moving
+and runs at a maximum of 6.4 kHz. The obstacle moves one pixel on the screen for every clock cycle, so
+at the maximum frequency the obstacle will pass the entire screen in one tenth of a second. This maximum
+frequency is scaled down by an initial value of 30, which means it will take around 3 seconds for the
+obstacle to pass the entire screen when the game is first started. For every two obstacles passed,
+this scaling value will decrement by one, resulting in a faster game speed.
 
 ## Obstacle, player and collision detection
+The obstacle's x-position is controlled by the game clock as described above. The y-position only
+changes when the obstacle leaves the screen after the player has passed it. A new random y-position
+is generated using a 16-bit linear-feedback shift register using only the 10 least significant
+bits.
+
+The player's vertical position on the screen is determined by the ADC value. Since this value consists
+of 12 bits and there are only 480 vertical pixels on the screen, the three least significant bits
+are discarded, giving a 9-bit value from 0-511. The remaining excess bits are removed by mapping the
+first 22 values to 0 and the last 22 values to 468 (also accounting for the 12 pixel height of the
+player sprite).
+
+The y-position of the player and the x- and y-position of the obstacle is given to a collision
+detection module, which gives a signal to the game state machine if the player collides with
+the obstacle.
