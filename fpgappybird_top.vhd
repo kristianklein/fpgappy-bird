@@ -2,22 +2,24 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity fpgappybird_top is
-	Port (	CLK : in  STD_LOGIC;
-			JA1,JA4 : out  STD_LOGIC; -- CS and SCLK
-			JA2,JA3 : in  STD_LOGIC; -- D0 and D1
-			BTN0 : in STD_LOGIC;
-			AN0,AN1,AN2,AN3 : out  STD_LOGIC;
-			CA,CB,CC,CD,CE,CF,CG : out  STD_LOGIC;
-			DP : out  STD_LOGIC;
-			LD0, LD1 : OUT STD_LOGIC;
-			RED0,RED1,RED2 : OUT STD_LOGIC;
-			GRN0,GRN1,GRN2 : OUT STD_LOGIC;
-			BLU1,BLU2 : OUT STD_LOGIC;
-			HSYNC,VSYNC : OUT STD_LOGIC);
+	Port (	CLK : in  STD_LOGIC; -- 50 MHz system clock
+			JA1,JA4 : out  STD_LOGIC; -- CS and SCLK on PmodAD1
+			JA2,JA3 : in  STD_LOGIC; -- D0 and D1 on PmodAD1
+			BTN0 : in STD_LOGIC; -- Push button for start/pause/restart game
+			AN0,AN1,AN2,AN3 : out  STD_LOGIC; -- 7-segment display anodes
+			CA,CB,CC,CD,CE,CF,CG : out  STD_LOGIC; -- 7-segment cathodes
+			DP : out  STD_LOGIC; -- Decimal point
+			LD0, LD1 : OUT STD_LOGIC; -- LEDs for debuggin
+			RED0,RED1,RED2 : OUT STD_LOGIC; -- VGA
+			GRN0,GRN1,GRN2 : OUT STD_LOGIC; -- VGA
+			BLU1,BLU2 : OUT STD_LOGIC; -- VGA
+			HSYNC,VSYNC : OUT STD_LOGIC); -- VGA
 end fpgappybird_top;
 
-architecture Behavioral of fpgappybird_top is
-	-- COMPONENTS
+architecture Structural of fpgappybird_top is
+	----------------
+	-- COMPONENTS --
+	----------------
 	COMPONENT binary2bcd
 	PORT(
 		binary : IN std_logic_vector(11 downto 0);
@@ -97,13 +99,12 @@ architecture Behavioral of fpgappybird_top is
 		);
 	END COMPONENT;
 	
-  COMPONENT bird_rom
+	COMPONENT bird_rom
 	PORT(
 		adr : IN std_logic_vector(7 downto 0);          
 		dout : OUT std_logic_vector(7 downto 0)
 		);
 	END COMPONENT;
-
 
 	COMPONENT game_timer
 	PORT(
@@ -161,9 +162,9 @@ architecture Behavioral of fpgappybird_top is
 		);
 	END COMPONENT;
 
-	
-
-	-- SIGNALS
+	-------------
+	-- SIGNALS --
+	-------------
 	SIGNAL AD1_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL AD2_sig : STD_LOGIC_VECTOR (11 DOWNTO 0);
 	SIGNAL bcd_sig : STD_LOGIC_VECTOR (15 DOWNTO 0);
@@ -190,12 +191,11 @@ architecture Behavioral of fpgappybird_top is
 	SIGNAL reset_sig : STD_LOGIC;
 	SIGNAL random_start_sig : STD_LOGIC;
 begin
-	LD0 <= enable_sig;
-	LD1 <= random_start_sig;
-  
-	-- INSTANTIATIONS
+	--------------------
+	-- INSTANTIATIONS --
+	--------------------
 	Inst_binary2bcd: binary2bcd PORT MAP(
-		binary => points_sig,--player_y_12bit,
+		binary => points_sig,
 		bcd => bcd_sig
 	);
 
@@ -211,7 +211,7 @@ begin
 	Inst_sampler: sampler PORT MAP(
 		CLK => CLK,
 		done => done_sig,
-		prescaler => "0100000100011010", -- scale down by 1 MHz down by 16666 (60 Hz)
+		prescaler => "0100000100011010", -- scale 1 MHz down by 16666 (60 Hz)
 		enable => '1',
 		start => start_sig
 	);
@@ -220,8 +220,8 @@ begin
 		Clk => CLK,
 		Start => start_sig,
 		Done => done_sig,
-		SClk => JA4, -- Sclk pin on the ADC
-		CS => JA1, -- CS pin on ADC
+		SClk => JA4,
+		CS => JA1,
 		D0 => JA2,
 		D1 => JA3,
 		AD1 => AD1_sig,
@@ -274,7 +274,7 @@ begin
 	);
 
 	Inst_obstacle: obstacle PORT MAP(
-		game_clock => game_clock_sig, -- change this to game_clock_sig
+		game_clock => game_clock_sig,
 		reset => reset_sig,
 		obstacle_x => obstacle_x_sig,
 		generate_random_y => random_start_sig
@@ -314,5 +314,10 @@ begin
 	(CA,CB,CC,CD,CE,CF,CG) <= seven_segment_sig;
 	(RED2,RED1,RED0,GRN2,GRN1,GRN0,BLU2,BLU1) <= rgb_out_sig;
 	player_y_12bit <= '0' & '0' & player_y_sig;
-end Behavioral;
+	
+	-- Debugging
+	LD0 <= enable_sig;
+	LD1 <= random_start_sig;
+	
+end Structural;
 

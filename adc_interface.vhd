@@ -12,23 +12,23 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity adc_interface is
-    Port ( Clk :   in  STD_LOGIC;  -- System clock (50 MHz)
-           Start : in  STD_LOGIC;  -- Start skift 0->1 starter en konvertering
-           Done : out  STD_LOGIC;  -- Done=1 Angiver at konverteringen er færdig
+    Port ( 	Clk :   in  STD_LOGIC;  -- System clock (50 MHz)
+			Start : in  STD_LOGIC;  -- Start skift 0->1 starter en konvertering
+			Done : out  STD_LOGIC;  -- Done=1 Angiver at konverteringen er færdig
             SClk:  out  STD_LOGIC;  -- Seriel Clock til ADC
             CS:    out  STD_LOGIC;  -- Chip Select til ADC (starter og stopper konverteringen)
             D0:    in   STD_LOGIC;  -- Burde kaldes for D1 - data bit fra ADC0
             D1:    in   STD_LOGIC;  -- Burde kaldes for D2 - data bit fra ADC1
-           AD1 :  out  STD_LOGIC_VECTOR (11 downto 0);   -- 12 bit AD data #1
-           AD2 :  out  STD_LOGIC_VECTOR (11 downto 0));  -- 12 bit AD data #2
+			AD1 :  out  STD_LOGIC_VECTOR (11 downto 0);   -- 12 bit AD data #1
+			AD2 :  out  STD_LOGIC_VECTOR (11 downto 0));  -- 12 bit AD data #2
 end adc_interface;
 
 architecture Behavioral of adc_interface is
-	type   States is ( Reset,     -- Start tilstand første gang
-	                   Idle, 	   -- Der ventes på Start signal
-							 S0,        -- SClk <= '0'
-							 S1,        -- SClk <= '1'
-							 ADC_Done);	-- Indiker at ADc er færdig					
+	type States is (Reset,     -- Start tilstand første gang
+					Idle, 	   -- Der ventes på Start signal
+					S0,        -- SClk <= '0'
+					S1,        -- SClk <= '1'
+					ADC_Done);	-- Indiker at ADc er færdig					
 	signal State: States := Reset;
 	
 	signal Count: integer range 0 to 16 := 0;
@@ -36,8 +36,7 @@ architecture Behavioral of adc_interface is
 	signal Temp1, Temp2: STD_LOGIC_VECTOR( 11 downto 0) := "000000000000";
 	
 begin
-
-   -- Denne process bruger en Finite state machine til overholde timingen og
+	-- Denne process bruger en Finite state machine til overholde timingen og
 	-- på den måde hente 2x12bit data fra PmodAD1
 	adc_interface_process: process( Clk)
 		Variable Scale: integer range 0 to 7; -- 12,5 MHz og 25 MHz ved Clk= 50 MHz
@@ -108,18 +107,4 @@ begin
 			end if;
 		end if;
 	end process;
-	
-	
-	
-	
-	
-	
-	
-	
---							if Count=16 then
---							State <= ADC_Done; --<<< Skift tilstand >>>
---						else
---							State <= S0; --<<< Skift tilstand >>>
---						end if;
-	
 end Behavioral;

@@ -16,7 +16,7 @@ architecture Behavioral of random is
 	SIGNAL mask : STD_LOGIC_VECTOR (15 DOWNTO 0) := "1101001010010101";
 	SIGNAL LSB : STD_LOGIC;
 begin
-	-- 16-bit mask = 0xD295
+	-- 16-bit mask = 0xD295 = 0b1101001010010101
 	-- LSFR
 	
 	PROCESS (CLK, start)

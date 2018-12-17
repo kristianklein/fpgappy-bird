@@ -34,11 +34,10 @@ begin
 		points_sig <= (OTHERS => '0');
 		display_counter <= (OTHERS => '0');
     ELSIF (rising_edge(CLK) AND enable = '1') THEN    
-        -- Scale down 50 MHz clock to of 3200 Hz (160 Hz * 20)
-        -- (4 seconds for an entire screen to roll by at 160 Hz)
-        -- Increase the game_clock frequency every third screen
+        -- Scale down 50 MHz clock to of 6400 Hz
+        -- Increase the game_clock frequency every other screen
         -- by increasing the level-counter
-          IF (outer_prescaler > 7814) THEN -- 6400 Hz (outer clock) 15624
+          IF (outer_prescaler > 7814) THEN -- 6400 Hz (outer clock) 15624 counts
             
             outer_prescaler <= (OTHERS => '0');
             
@@ -48,16 +47,16 @@ begin
               
               -- Grant 1 point for each full screen that rolls by (= one obstacle)
 			  -- 640 pixels = 2*640 clock edges
-              IF (display_counter >= 1279) THEN
+              IF (display_counter >= 1280) THEN
                 display_counter <= (OTHERS => '0');
-                obstacles_passed <= obstacles_passed + 1; -- ikke her!
+                obstacles_passed <= obstacles_passed + 1;
                 points_sig <= points_sig + 1;
               ELSE
                 display_counter <= display_counter + 1;
               END IF;
               
               
-              -- Increase level if obstacles_passed > 2
+              -- Increase level for every other obstacle
               IF (obstacles_passed > 1) THEN
                 obstacles_passed <= (OTHERS => '0');
 				IF (level_counter > 29) THEN

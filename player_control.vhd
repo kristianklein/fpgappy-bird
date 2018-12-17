@@ -3,12 +3,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-
 entity player_control is
     Port ( CLK : in STD_LOGIC;
            collision : in STD_LOGIC;
            adc_value : in  STD_LOGIC_VECTOR (11 downto 0);
-           player_y : out  STD_LOGIC_VECTOR (9 downto 0)); -- 10 bits just to make it the same as x coordinates
+           player_y : out  STD_LOGIC_VECTOR (9 downto 0)); -- 10 bits just to make it the same length as x coordinates
 end player_control;
 
 architecture Behavioral of player_control is
@@ -25,20 +24,20 @@ begin
 		IF rising_edge(CLK) THEN
 			IF (counter >= prescaler AND collision = '0') THEN
 				-- Map ADC value to player y-position on screen
-				-- y-position can be 0 to (480 - player_height)
+				-- y-position can be 0 to (480 - player_height = 468)
 				-- Max 9-bit ADC value is 511, so we subtract 
 				-- 31 (~16 from each "end" of the potentiometer)
 				-- and also subtract the player height, so the sprite
 				-- cannot leave the bottom of the screen.
-				-- In this case we must subtract 71 total, or 36 in
-				-- each end - or in this case just map the bottom 36 values
-				-- to 0 and the top 36 values to VMAX = 480 - player_height
+				-- In this case we must subtract 43 total, or ~22 in
+				-- each end - or in this case just map the bottom 22 values
+				-- to 0 and the top 22 values to VMAX = 480 - player_height
 				IF (adc_10bit < 22) THEN
 					player_y <= (OTHERS => '0');
 				ELSIF (adc_10bit > 489) THEN
 					player_y <= "0111010100"; -- 468 binary
 				ELSE
-					player_y <= adc_10bit - 36;
+					player_y <= adc_10bit - 22;
 				END IF;
 				
 			ELSE

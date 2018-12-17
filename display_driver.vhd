@@ -11,7 +11,9 @@ entity display_driver is
 end display_driver;
 
 architecture Structural of display_driver is
-	-- COMPONENTS
+	----------------
+	-- COMPONENTS --
+	----------------
 	COMPONENT clockscaler_1k
 	PORT(
 		clock : IN std_logic;          
@@ -56,12 +58,16 @@ architecture Structural of display_driver is
 		);
 	END COMPONENT;
 
-	-- SIGNALS
+	-------------
+	-- SIGNALS --
+	-------------
 	SIGNAL scaled_clock : STD_LOGIC;
 	SIGNAL bcd_mux : STD_LOGIC_VECTOR (3 DOWNTO 0);
 	SIGNAL sel_sig : STD_LOGIC_VECTOR (1 DOWNTO 0);
 begin
-	-- INSTANTIATIONS
+	--------------------
+	-- INSTANTIATIONS --
+	--------------------
 	Inst_clockscaler_1k: clockscaler_1k PORT MAP(
 		clock => clock,
 		clock_1k => scaled_clock

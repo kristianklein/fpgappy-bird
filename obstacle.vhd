@@ -24,7 +24,7 @@ begin
 	ELSIF rising_edge(game_clock) THEN
 	  IF (x_sig < 1) THEN
         x_sig <= "1010000000";
-		generate_random_y <= '1';
+		generate_random_y <= '1'; -- Get a new random y-value everytime an obstacle has passed
       ELSE
         x_sig <= x_sig - 1;
 		generate_random_y <= '0';

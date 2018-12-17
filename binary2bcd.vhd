@@ -16,7 +16,7 @@ architecture Behavioral of binary2bcd is
 		VARIABLE bcd_var : STD_LOGIC_VECTOR(15 downto 0) := (OTHERS => '0');
 		VARIABLE bin_var : STD_LOGIC_VECTOR(11 downto 0) := bin;
 	BEGIN
-		FOR i IN 0 TO 11 LOOP  -- Iterate for each bit in the binary number
+		FOR i IN 0 TO 11 LOOP  -- Iterate through each bit in the binary number
 			
 			bcd_var(15 downto 1) := bcd_var(14 downto 0);  -- Left shift bcd vector
 			bcd_var(0) := bin_var(11);

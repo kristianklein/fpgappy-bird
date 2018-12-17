@@ -133,7 +133,7 @@ begin
             BLACK WHEN "10010101",
             BLACK WHEN "10010110",
             BLACK WHEN "10010111",
-            BLACK WHEN "10011011", --Line 9 (10011011)
+            BLACK WHEN "10011011", --Line 9
             ORANGE WHEN "10011100",
             ORANGE WHEN "10011101",
             ORANGE WHEN "10011110",
@@ -147,7 +147,7 @@ begin
             RED WHEN "10100110",
             RED WHEN "10100111",
             BLACK WHEN "10101000",
-            BLACK WHEN "10101101", -- Line 10 (10101101)
+            BLACK WHEN "10101101", -- Line 10
             BLACK WHEN "10101110",
             ORANGE WHEN "10101111",
             ORANGE WHEN "10110000",
