@@ -17,7 +17,7 @@ VGA port and the player's current score is shown on the multiplexed 7-segment di
 A block diagram of the system is shown in the image below. VHDL modules are displayed as
 rectangles and external hardware as circles.
 
-*INSERT IMAGE HERE*
+![Block diagram](img/block_diagram.png)
 
 In the following sections, the purpose of each component is briefly described.
 
