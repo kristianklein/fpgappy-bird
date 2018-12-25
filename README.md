@@ -1,4 +1,6 @@
 # FPGAppy Bird
+https://github.com/kristianklein/fpgappy-bird
+
 This project was created for a course in digital electronics on the fifth semester
 of Electronics and Computer Engineering at the University of Southern Denmark.
 
